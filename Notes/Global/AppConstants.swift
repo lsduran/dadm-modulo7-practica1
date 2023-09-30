@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+struct AppConstants {
+    static let defaultColor = [CGFloat(0/255), CGFloat(0/255), CGFloat(0/255), CGFloat(1.0)]
+}

@@ -8,9 +8,11 @@
 import Foundation
 import UIKit
 
-class InputTextViewDelegate: UITextViewDelegate {
+extension AddNoteViewController: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
-        
+        if !textView.text.isEmpty {
+            textView.borderColor = .lightGray
+        }
     }
     
     func textViewDidChangeSelection(_ textView: UITextView) {

@@ -6,3 +6,11 @@
 //
 
 import Foundation
+
+struct Note : Codable {
+    var title : String
+    var content : String
+    var date : Date
+    var fontSize : Float
+    var fontColor : [CGFloat]
+}

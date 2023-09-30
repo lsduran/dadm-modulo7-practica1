@@ -97,7 +97,8 @@ class NotesTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
         if segue.identifier == "showNoteSegue" {
             let destination = segue.destination as! AddNoteViewController
-            destination.newNote = noteManager.getNote(at: self.tableView.indexPathForSelectedRow!.row)
+            destination.note = noteManager.getNote(at: self.tableView.indexPathForSelectedRow!.row)
+            destination.newNoteFlag = false
         }
     }
     
@@ -106,9 +107,13 @@ class NotesTableViewController: UITableViewController {
         
         let source = segue.source as! AddNoteViewController
         
-        note = source.newNote
+        note = source.note
         
-        noteManager.createNote(note: note!)
+        if source.newNoteFlag {
+            noteManager.createNote(note: note!)
+        } else {
+            noteManager.updateNote(note: note!, at: self.tableView.indexPathForSelectedRow!.row)
+        }
         
         print("# notas: ", noteManager.countNotes())
         
